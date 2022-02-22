@@ -1,0 +1,9 @@
+name: aws-internet-gateway
+type: terraform
+description: Module to provision internet-gateway on aws
+tags:
+  - tools
+  - devops
+versions: []
+cloudProvider: aws
+id: github.com/cloud-native-toolkit/terraform-aws-internet-gateway
