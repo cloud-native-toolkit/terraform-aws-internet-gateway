@@ -44,7 +44,10 @@ provider "aws" {
 module "dev_igw" {
 
   source = "github.com/cloud-native-toolkit/terraform-aws-internet-gateway.git"
-  
+    _count = var.cloud_provider == "ibm" ? 1 : 0
+    resource_group_name = var.resource_group_name
+    name_prefix = var.name_prefix
+    vpc_name= module.dev_vpc.vpc[0].tags["Name"]
   
 }
 ```

@@ -34,15 +34,30 @@ variable "provision" {
   description = "Flag indicating that the instance should be provisioned. If false then an existing instance will be looked up"
   default     = true
 }
-variable "vpc_id" {
+variable "vpc_name" {
   type        = string
-  description = "The id of the existing VPC instance"
-  default     = ""
+  description = "The name of the existing VPC instance"
+  default     = "swe-vpc1"
 }
+variable "igw_name" {
+  type        = string
+  description = "The name of the existing VPC instance"
+  default     = "swe-vpc1-igw"
+}
+
+# variable "vpc_id" {
+#   type        = string
+#   description = "The id of the existing VPC instance"
+#   default     = ""
+# }
 variable "resource_group_name" {
   type        = string
   description = "Existing resource group where the IKS cluster will be provisioned."
   default     = "default"
 }
 
-
+variable "cloud_provider" {
+  type = string
+  default = "ibm"
+  
+}
