@@ -1,20 +1,11 @@
 name: aws-internet-gateway
 type: terraform
-cloudProvider: aws
 description: Module to provision internet-gateway on aws
 tags:
-    - infrastructure
-    - networking
-    - aws
+  - tools
+  - devops
 versions:
   - platforms: []
     dependencies: []
-    #   - id: aws-vpc
-    #     refs:
-    #       - source: github.com/cloud-native-toolkit/terraform-aws-vpc
-    #         version: ">= 1.0.0"
     variables: []
-    #   - name: resource_group_name
-    #     scope: global
-    #   - name: name_prefix
-    #     scope: global
+cloudProvider: aws
