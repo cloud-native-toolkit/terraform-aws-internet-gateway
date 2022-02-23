@@ -14,13 +14,13 @@ versions:
     
     dependencies: []
     variables:
-      - name: resource_group_name
-        scope: global
-      - name: name_prefix
-        scope: global
-      - name: internal_cidr      
-      - name: instance_tenancy
-      - name: enable_dns_hostnames
-      - name: enable_dns_support
+      # - name: resource_group_name
+      #   scope: global
+      # - name: name_prefix
+      #   scope: global
+      # - name: internal_cidr      
+      # - name: instance_tenancy
+      # - name: enable_dns_hostnames
+      # - name: enable_dns_support
   
 
