@@ -7,15 +7,18 @@ tags:
     - networking
     - aws
 versions:
-  - platforms: []
-    providers:
-      - name: aws
-        source: "hashicorp/aws"    
-    dependencies: []
-    variables:
-      - name: resource_group_name
-        scope: global
-      - name: name_prefix
-        scope: global
-  
+- platforms: []
+  providers:
+    - name: aws
+      source: "hashicorp/aws"  
+  dependencies:
+    - id: aws-vpc
+      refs:
+        - source: github.com/cloud-native-toolkit/terraform-aws-vpc
+          version: ">= 1.0.0"
+  variables:
+    - name: resource_group_name
+      scope: global
+    - name: name_prefix
+      scope: global
 
