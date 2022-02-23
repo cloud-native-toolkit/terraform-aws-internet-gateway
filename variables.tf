@@ -26,9 +26,9 @@ variable "resource_group_name" {
   description = "The name of the resource group where the VPC is deployed. On AWS this value becomes a tag."
   default     = "default"
 }
-variable "provison" {
+variable "provision" {
   type =  bool
-  description = "Flag to determine whether to provison Internet gateway or not. Defautl set to true"
+  description = "Flag to determine whether to provision Internet gateway or not. Defautl set to true"
   default = true
 }
 
