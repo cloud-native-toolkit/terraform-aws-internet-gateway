@@ -16,7 +16,7 @@ resource null_resource write_outputs {
     command = "echo \"$${OUTPUT}\" > igw-output.json"
     environment = {
       OUTPUT = jsonencode({
-        vpc_name=module.dev_vpc.vpc[0].tags["Name"]
+        vpc_name=module.dev_vpc.vpc.tags["Name"]
         vpc_id= module.dev_vpc.vpc_id
         vpc_name= module.dev_vpc.vpc_name
         igw_id= module.dev_igw.igw_id    
