@@ -1,9 +1,9 @@
 module "dev_igw"{
     source = "./module"
-    _count = var.cloud_provider == "aws" ? 1 : 0
-    provision = var.provision
+    provision = var.provision && var.cloud_provider == "aws" ? true : false
     resource_group_name = var.resource_group_name
     name_prefix = var.name_prefix
-    vpc_name= module.dev_vpc.vpc[0].tags["Name"]
-
+    #vpc_name= module.dev_vpc.vpc.tags["Name"]
+    vpc_name=module.dev_vpc.vpc_name
+    
 }

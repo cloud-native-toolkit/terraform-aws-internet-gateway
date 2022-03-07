@@ -12,7 +12,7 @@ variable "name_prefix"{
 variable "vpc_name" {
   type = string
   description =  "The name of the VPC instance"
-  
+  default = ""
 }
 
 # variable "vpc_id" {
@@ -32,10 +32,10 @@ variable "provision" {
   default = true
 }
 
-variable "_count" {
-  type = number
-  description = "Number of resources to be provisioned"
-  default = 1
+# variable "_count" {
+#   type = number
+#   description = "Number of resources to be provisioned"
+#   default = 1
   
-}
+# }
 
