@@ -3,7 +3,6 @@ module "dev_igw"{
     provision = var.provision && var.cloud_provider == "aws" ? true : false
     resource_group_name = var.resource_group_name
     name_prefix = var.name_prefix
-    #vpc_name= module.dev_vpc.vpc.tags["Name"]
     vpc_name=module.dev_vpc.vpc_name
     
 }
