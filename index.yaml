@@ -2,8 +2,56 @@ name: aws-internet-gateway
 type: terraform
 description: Module to provision internet-gateway on aws
 tags:
-  - tools
-  - devops
-versions: []
+  - infrastructure
+  - networking
+  - aws
+versions:
+  - platforms: []
+    providers:
+      - name: aws
+        source: hashicorp/aws
+    dependencies:
+      - id: aws-vpc
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-aws-vpc
+            version: '>= 1.0.0'
+    variables:
+      - name: name
+        type: string
+        description: The name of the IGW instance
+        default: '"" '
+      - name: name_prefix
+        type: string
+        description: >-
+          Prefix to be added to the names of resources which are being
+          provisioned
+        default: swe
+        scope: global
+      - name: vpc_name
+        type: string
+        description: The name of the VPC instance
+        default: ''
+        moduleRef:
+          id: aws-vpc
+          output: vpc_name
+      - name: resource_group_name
+        type: string
+        description: >-
+          The name of the resource group where the VPC is deployed. On AWS this
+          value becomes a tag.
+        default: default
+        scope: global
+      - name: provision
+        type: bool
+        description: >-
+          Flag to determine whether to provision Internet gateway or not.
+          Defautl set to true
+        default: true
+        scope: module
+    version: v1.1.0
+    outputs:
+      - name: 'igw_id   '
+      - name: 'igw_arn    '
+      - name: 'vpc_name    '
 cloudProvider: aws
-id: github.com/cloud-native-toolkit/terraform-aws-internet-gateway
+id: github.com/cloud-native-toolkit/terraform-aws-vpc-gateways
