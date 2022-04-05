@@ -4,12 +4,17 @@ name: Verify
 on:
   workflow_call:
     secrets:
-        # TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        # TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        # TF_VAR_enabled: ${{ matrix.enabled }}
-        #required: true
+        TF_VAR_access_key:
+          required: true
+        TF_VAR_secret_key: 
+          required: true        
+        AWS_ACCESS_KEY_ID:
+          required: true        
+        AWS_SECRET_ACCESS_KEY:
+          required: true        
+        TF_VAR_enabled: 
+          required: true        
+        
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,23 +42,23 @@ jobs:
         with:
           clusterId: ${{ matrix.testcase }}
           validateDeployScript: .github/scripts/validate-deploy.sh
-        # env:
-        #   TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #   TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          #TF_VAR_enabled: ${{ matrix.enabled }}
+        env:
+          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          TF_VAR_enabled: ${{ matrix.enabled }}
 
       - name: Verify destroy on ${{ matrix.testcase }}
         uses: cloud-native-toolkit/action-module-verify-destroy@main
         if: ${{ always() }}
         with:
           clusterId: ${{ matrix.testcase }}
-        # env:
-        #   TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #   TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          #TF_VAR_enabled: ${{ matrix.enabled }}
+        env:
+          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          TF_VAR_enabled: ${{ matrix.enabled }}
   
   
