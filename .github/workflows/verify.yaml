@@ -3,6 +3,8 @@ name: Verify
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
+  pull_request:
+    branches: [ main ]
   push:
     branches: [ main ]
 
@@ -23,6 +25,7 @@ jobs:
 
   release:
     needs: [verify, verifyMetadata]
+    if: ${{ github.event_name == 'push' }}
     uses: cloud-native-toolkit/action-workflows/.github/workflows/release-module.yaml@v1
     secrets:
       TOKEN: ${{ secrets.TOKEN }}
