@@ -2,7 +2,6 @@ variable "name" {
   type        = string
   description = "The name of the IGW instance"
   default     = ""
-  
 }
 
 variable "name_prefix"{
